@@ -1,10 +1,10 @@
-# DigitalHippo - A Modern Fullstack E-Commerce Marketplace for Digital Products
+# DigitalHippo - A Modern Full-Stack E-Commerce Marketplace for Digital Products
 
-Built with the Next.js 14 App Router, tRPC, TypeScript, Payload & Tailwind
+Built with the Next.js 14 App Router, tRPC, TypeScript, Payload, & Tailwind
 
 ![Project Image](https://github.com/joschan21/digitalhippo/blob/master/public/thumbnail.jpg)
 
-## Copy & Paste List to follow along with the video (annoying stuff we don't wanna type out ourselves)
+## Copy & Paste List to Follow Along with the Video (Annoying Stuff We Don't Want to Type Out Ourselves)
 
 ### Logo SVG
 ```
@@ -160,7 +160,7 @@ return res
 const session = event.data.object as Stripe.Checkout.Session
 
 if (!session?.metadata?.userId || !session?.metadata?.orderId) {
-return res.status(400).send(`Webhook Error: No user present in metadata`)
+return res.status(400).send(`Webhook Error: No user present in metadata.`)
 }
 
 if (event.type === 'checkout.session.completed') {
@@ -177,7 +177,7 @@ const { docs: users } = await payload.find({
 
 const [user] = users
 
-if (!user) return res.status(404).json({ error: 'No such user exists.' })
+if (!user) return res.status(404).json({ error: 'No such user exists' })
 
 const { docs: orders } = await payload.find({
     collection: 'orders',
@@ -191,7 +191,7 @@ const { docs: orders } = await payload.find({
 
 const [order] = orders
 
-if (!user) return res.status(404).json({ error: 'No such order exists.' })
+if (!order) return res.status(404).json({ error: 'No such order exists' })
 
 await payload.update({
     collection: 'orders',
@@ -210,7 +210,7 @@ try {
     const data = await resend.emails.send({
     from: 'DigitalHippo <hello@joshtriedcoding.com>',
     to: [user.email],
-    subject: 'Thanks for your order! This is your receipt.',
+    subject: 'Thanks for Your Order! This is Your Receipt.',
     html: ReceiptEmailHtml({
         date: new Date(),
         email: user.email,
@@ -532,7 +532,7 @@ const footerCopyright = {
 ```
 <Html>
 <Head />
-<Preview>The marketplace for high-quality digital goods.</Preview>
+<Preview>The Marketplace for High-Quality Digital Goods.</Preview>
 <Body style={main}>
     <Container style={container}>
     <Img
@@ -544,7 +544,7 @@ const footerCopyright = {
     />
     <Text style={paragraph}>Hi there,</Text>
     <Text style={paragraph}>
-        Welcome to DigitalHippo, the marketplace for high quality digital
+        Welcome to DigitalHippo, the marketplace for high-quality digital
         goods. Use the button below to {actionLabel}.
     </Text>
     <Section style={btnContainer}>
@@ -617,8 +617,8 @@ const footer = {
 ### Customizing our metadata
 ```
 export function constructMetadata({
-  title = 'DigitalHippo - the marketplace for digital assets',
-  description = 'DigitalHippo is an open-source marketplace for high-quality digital goods.',
+  title = 'DigitalHippo - The Marketplace for Digital Assets',
+  description = 'DigitalHippo is an open-source marketplace for high-quality digital goods',
   image = '/thumbnail.png',
   icons = '/favicon.ico',
   noIndex = false,
